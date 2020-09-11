@@ -113,7 +113,7 @@ open CountdownSolver
 let findBestSolutionTimed problem = 
     let timer = System.Diagnostics.Stopwatch.StartNew()
     let result = findBestSolution problem
-    printfn "Time to find best solution    : %A" timer.Elapsed.TotalSeconds
+    printfn "Time to find best solution    : %fs" timer.Elapsed.TotalSeconds
     result
 
 let findExactSolutionTimed problem = 
@@ -121,8 +121,8 @@ let findExactSolutionTimed problem =
     let result = findExactSolution problem
     let duration = timer.Elapsed.TotalSeconds
     match result with 
-    | Some solution -> printfn "Time to find exact solution   : %A" duration
-    | None          -> printfn "Time to find no exact solution: %A" duration
+    | Some solution -> printfn "Time to find exact solution   : %fs" duration
+    | None          -> printfn "Time to find no exact solution: %fs" duration
     result
 
 let runTest problem =

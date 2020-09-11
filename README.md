@@ -51,29 +51,32 @@ Not all operations apply to all number pairs:
 
 The three test problems are timed when the program is run. Here are the results from may Windows 10 Ultrabook:
 ```
+Target = 178
+Numbers=[50; 75; 2; 4; 1; 4]
 570 exact solutions available
-Time to try to find exact solution: 00:00:00.1493456
-Time to find best solution: 00:00:03.3189662
-Target=178, Numbers=[178; 4]
+Time to find exact solution   : 0.1093146s
+Time to find best solution    : 3.2278945s
 50 * 2 = 100
 100 + 75 = 175
 175 + 4 = 179
 179 - 1 = 178
 --------------------------------------------------
+Target = 952
+Numbers=[25; 50; 75; 100; 3; 6]
 11 exact solutions available
-Time to try to find exact solution: 00:00:01.2906466
-Time to find best solution: 00:00:05.9781165
-Target=952, Numbers=[952]
+Time to find exact solution   : 1.2994486s
+Time to find best solution    : 5.8430774s
 75 * 3 = 225
 100 + 6 = 106
 106 * 225 = 23850
 23850 - 50 = 23800
 23800 / 25 = 952
 --------------------------------------------------
+Target = 824
+Numbers=[3; 7; 6; 2; 1; 7]
 0 exact solutions available
-Time to try to find exact solution: 00:00:00.8824374
-Time to find best solution: 00:00:02.8050100
-Target=824, Numbers=[826]
+Time to find no exact solution: 0.8627209s
+Time to find best solution    : 2.8236302s
 3 + 7 = 10
 10 * 6 = 60
 60 - 1 = 59
