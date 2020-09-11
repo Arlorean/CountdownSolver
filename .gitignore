@@ -2,3 +2,5 @@
 /.ionide
 CountdownSolver/bin/*
 CountdownSolver/obj/*
+.ionide/*
+*.user

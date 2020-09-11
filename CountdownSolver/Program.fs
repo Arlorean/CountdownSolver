@@ -107,10 +107,27 @@ module CountdownSolver =
     let printSolution solution =
         printfn "Target=%i, Numbers=%A" solution.Target solution.Numbers
         solution.Expressions |> List.rev |> List.iter printExpr
-        printfn "--------------------------------------------------"
 
 
 open CountdownSolver
+
+let findBestSolutionTimed problem = 
+    let timer = System.Diagnostics.Stopwatch.StartNew()
+    let result = findBestSolution problem
+    printfn "Time to find best solution: %A" timer.Elapsed
+    result
+
+let findExactSolutionTimed problem = 
+    let timer = System.Diagnostics.Stopwatch.StartNew()
+    let result = findExactSolution problem
+    printfn "Time to try to find exact solution: %A" timer.Elapsed
+    result
+
+let runTest problem =
+    enumSolutions problem |> Seq.filter isExactSolution |> Seq.length |> printfn "%i exact solutions available"
+    findExactSolutionTimed problem |> ignore
+    findBestSolutionTimed problem |> printSolution
+    printfn "--------------------------------------------------"
 
 /// Test from http://www.maths-resources.com/countdown/practise.html#numbers
 /// 50 * 2 = 100
@@ -144,8 +161,8 @@ let problem3 = {
 
 [<EntryPoint>]
 let main argv =
-    findBestSolution problem1 |> printSolution
-    findBestSolution problem2 |> printSolution
-    findBestSolution problem3 |> printSolution
+    runTest problem1 
+    runTest problem2 
+    runTest problem3 
 
     0 // return an integer exit code
