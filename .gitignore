@@ -1,2 +1,4 @@
 /.vs
 /.ionide
+CountdownSolver/bin/*
+CountdownSolver/obj/*
