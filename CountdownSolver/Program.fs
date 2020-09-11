@@ -105,7 +105,6 @@ module CountdownSolver =
         printfn "%i %s %i = %i" expr.A (printOp expr.Op) expr.B (eval expr)
 
     let printSolution solution =
-        printfn "Target=%i, Numbers=%A" solution.Target solution.Numbers
         solution.Expressions |> List.rev |> List.iter printExpr
 
 
@@ -114,16 +113,21 @@ open CountdownSolver
 let findBestSolutionTimed problem = 
     let timer = System.Diagnostics.Stopwatch.StartNew()
     let result = findBestSolution problem
-    printfn "Time to find best solution: %A" timer.Elapsed
+    printfn "Time to find best solution    : %A" timer.Elapsed.TotalSeconds
     result
 
 let findExactSolutionTimed problem = 
     let timer = System.Diagnostics.Stopwatch.StartNew()
     let result = findExactSolution problem
-    printfn "Time to try to find exact solution: %A" timer.Elapsed
+    let duration = timer.Elapsed.TotalSeconds
+    match result with 
+    | Some solution -> printfn "Time to find exact solution   : %A" duration
+    | None          -> printfn "Time to find no exact solution: %A" duration
     result
 
 let runTest problem =
+    printfn "Target = %i" problem.Target
+    printfn "Numbers=%A" problem.Numbers
     enumSolutions problem |> Seq.filter isExactSolution |> Seq.length |> printfn "%i exact solutions available"
     findExactSolutionTimed problem |> ignore
     findBestSolutionTimed problem |> printSolution
